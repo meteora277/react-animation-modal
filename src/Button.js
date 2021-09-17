@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
+    font-family: 'Montserrat', sans-serif;
     display:inline-block;
     border:none;
     border-radius: 0.5rem;
@@ -13,7 +14,7 @@ const StyledButton = styled.button`
 StyledButton.defaultProps = {
     height: "3rem",
     width: "5rem",
-    background: "yellow"
+    background: "#ff9933"
 }
 
 function Button(props){
@@ -28,7 +29,7 @@ function Button(props){
 }
 
 Button.defaultProps = {
-    text:"uwu",
+    text:"Login",
 }
 
 export default Button

@@ -1,14 +1,15 @@
 import "./App.css";
-import styled, { createGlobalStyle, css } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import Button from "./Button";
+import Login from "./login"
 
 const button = {
-  rest: { scale: 1 },
-  hover: { scale: 1.3 },
-  pressed: { scale: 1.2 }
+  rest: { y: "0px" },
+  hover: { y: "-5px" },
+  pressed: { y: "0px" }
 };
 
 const GlobalStyle = createGlobalStyle`
@@ -18,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body{
+    font-family: 'Montserrat', sans-serif;
     height:100vh;
     background:grey; 
     display:grid;
@@ -28,21 +30,33 @@ const Overlay = styled.div`
   position: absolute;
   display: grid;
   place-items: center;
-  background: black;
-  opacity: 0.6;
+  background: #12181b;
+  opacity: 0.7;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  
 `;
-const Modal = styled.div`.
-
-  width: 60%;
-  height:40%;
-  background: lightblue;
+const Modal = styled.div`
+  
+  display:relative;
+  height: 30%;
+  width: 50%;
+  background: #12181b;
   text-align: center;
   font-size:2rem;
   padding: 3rem;
+  display:flex;
+  flex-direction:column;
+  box-shadow: 0px 10px 25px 5px rgb(2,2,3);
+
+   button{
+     height:3rem;
+     width: 7rem;
+     background: white;
+     border:none;
+   }
 `;
 
 function App() {
@@ -71,11 +85,10 @@ function App() {
         </motion.div>
       )}
 
-
       <AnimatePresence
         initial={false}
         exitBeforeEnter={true}
-        onExitComplete ={()=> null}
+        onExitComplete={() => null}
       >
         {ModalOpen ? (
           <motion.div
@@ -85,10 +98,7 @@ function App() {
           >
             <Overlay>
               <Modal>
-                <div>
-                  Hello there i am a modal and i would like to interest you in
-                  accepting our sites cookies, thanks{" "}
-                </div>
+                <Login/>
                 <motion.button
                   variants={button}
                   initial={button.rest}
@@ -96,7 +106,7 @@ function App() {
                   whileHover={button.hover}
                   onClick={() => close()}
                 >
-                  owo
+                  Login
                 </motion.button>
               </Modal>
             </Overlay>
